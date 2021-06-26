@@ -3,7 +3,8 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import { auth, db } from "../firebase";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
-import { GiftedChat, Avatar, InputToolbar } from "react-native-gifted-chat";
+import { GiftedChat, Avatar } from "react-native-gifted-chat";
+import { findDOMNode } from "react-dom";
 
 function ChatScreen({ navigation, route }) {
   const [messages, setMessages] = useState([]);
@@ -116,18 +117,14 @@ function ChatScreen({ navigation, route }) {
     );
   };
 
-  const customMessage = (props) => {
-    return <InputToolbar accessoryStyle={{ backgroundColor: "red" }} />;
-  };
-
   return (
     <View style={{ flex: 1 }}>
       <GiftedChat
+        textInputProps={{ autoCorrect: false }}
         messagesContainerStyle={{ backgroundColor: "#fff" }}
         renderUsernameOnMessage
         renderAvatarOnTop
         renderAvatar={(props) => customAvatar(props)}
-        showAvatarForEveryMessage
         messages={messages}
         onSend={(message) => onSend(message)}
         timeTextStyle={{ left: { fontSize: 12 }, right: { fontSize: 12 } }}

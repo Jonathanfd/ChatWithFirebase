@@ -82,13 +82,18 @@ function LoginScreen({ navigation }) {
           buttonStyle={styles.button}
           onPress={() => navigation.navigate("Register")}
         />
-        <Text>Or chat as a guest</Text>
+        <Text style={{ fontSize: 18, margin: 5, color: "grey" }}>
+          Or chat as a guest
+        </Text>
         <Input
           placeholder="Name"
           value={nameAnonimous}
           onChangeText={(text) => setNameAnonimous(text)}
           label="Name"
-          leftIcon={{ type: "material", name: "badge", color: "dodgerblue" }}
+          leftIcon={{
+            name: "person",
+            color: "dodgerblue",
+          }}
           autoCapitalize="sentences"
           autoCorrect={false}
           onFocus={scrollToEndFn}
